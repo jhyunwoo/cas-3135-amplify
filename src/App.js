@@ -29,10 +29,24 @@ export default function App() {
       const fibData = await fibRes.json();
       const factData = await factRes.json();
 
-      if (fibData.type === 'success') setFib(fibData.result);
+      if (fibData.type === 'success') {
+          if(fibData.result !== null){
+              setFib(fibData.result);
+          }else{
+              setFib("Out of Range");
+          }
+      }
       else setError('Failed to fetch Fibonacci result.');
 
-      if (factData.type === 'success') setFact(factData.result);
+
+
+      if (factData.type === 'success') {
+          if(factData.result !== null){
+              setFact(factData.result);
+          }else{
+              setFact("Out of Range");
+          }
+      }
       else setError('Failed to fetch factorial result.');
 
       setX(userInput);
@@ -59,8 +73,8 @@ export default function App() {
 
       <div className="calcResult">
         {error && <p style={{ color: 'red' }}>{error}</p>}
-        {fib !== null ? <p>fib({x}) = <strong>{fib}</strong></p> : <p>fib({x}) = Out of Range</p>}
-        {fact !== null ? <p>fact({x}) = <strong>{fact}</strong></p> : <p>fact({x}) = Out of Range</p>}
+        {fib !== null && <p>fib({x}) = <strong>{fib}</strong></p>}
+        {fact !== null && <p>fact({x}) = <strong>{fact}</strong></p>}
       </div>
     </div>
   );
