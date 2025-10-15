@@ -59,8 +59,8 @@ export default function App() {
 
       <div className="calcResult">
         {error && <p style={{ color: 'red' }}>{error}</p>}
-        {fib !== null && <p>fib({x}) = <strong>{fib}</strong></p>}
-        {fact !== null && <p>fact({x}) = <strong>{fact}</strong></p>}
+        {fib !== null ? <p>fib({x}) = <strong>{fib}</strong></p> : <p>fib({x}) = Out of Range</p>}
+        {fact !== null ? <p>fact({x}) = <strong>{fact}</strong></p> : <p>fact({x}) = Out of Range</p>}
       </div>
     </div>
   );
